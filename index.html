@@ -15,6 +15,8 @@
             --dark-gray: #333333;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+            --announcement-bg: #FFD700;
+            --announcement-text: #1B4F72;
         }
 
         * {
@@ -31,6 +33,56 @@
             overflow-x: hidden;
         }
 
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: var(--announcement-bg);
+            color: var(--announcement-text);
+            text-align: center;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            direction: rtl;
+        }
+
+        .announcement-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .announcement-icon {
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .close-announcement {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--announcement-text);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .close-announcement:hover {
+            opacity: 1;
+        }
+
         /* Header & Navigation */
         header {
             background-color: var(--white);
@@ -39,6 +91,15 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
+        }
+
+        body.announcement-hidden header {
+            top: 0;
+        }
+
+        body:not(.announcement-hidden) header {
+            top: 44px;
         }
 
         .container {
@@ -160,6 +221,10 @@
             text-align: center;
             color: var(--white);
             margin-top: 70px;
+        }
+
+        body:not(.announcement-hidden) .hero {
+            margin-top: 114px;
         }
 
         .hero-content h1 {
@@ -724,6 +789,24 @@
         }
 
         @media (max-width: 768px) {
+            .announcement-bar {
+                font-size: 0.9rem;
+                padding: 8px 0;
+            }
+
+            .announcement-text {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .close-announcement {
+                right: 10px;
+            }
+
+            body:not(.announcement-hidden) .hero {
+                margin-top: 122px;
+            }
+
             .hamburger {
                 display: block;
             }
@@ -787,6 +870,11 @@
         }
 
         @media (max-width: 480px) {
+            .announcement-bar {
+                font-size: 0.8rem;
+                padding: 6px 0;
+            }
+
             .logo {
                 font-size: 1.4rem;
             }
@@ -833,6 +921,19 @@
     </style>
 </head>
 <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container">
+            <div class="announcement-text">
+                <i class="fas fa-bullhorn announcement-icon"></i>
+                <span>ڈسٹری بیوٹر ہول سیل پر دستیاب ہے۔</span>
+            </div>
+        </div>
+        <button class="close-announcement" id="closeAnnouncement">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <!-- Header & Navigation -->
     <header>
         <div class="container">
@@ -1319,12 +1420,19 @@
         const navLinks = document.querySelector('.nav-links');
         const imageGallery = document.getElementById('imageGallery');
         const notification = document.getElementById('notification');
+        const announcementBar = document.getElementById('announcementBar');
+        const closeAnnouncement = document.getElementById('closeAnnouncement');
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             renderProducts();
             setupEventListeners();
             updateCart();
+            
+            // Check if announcement was previously closed
+            if (localStorage.getItem('announcementClosed') === 'true') {
+                hideAnnouncement();
+            }
         });
 
         // Render products to the grid
@@ -1458,6 +1566,22 @@
                     closeProductModal();
                 }
             });
+
+            // Close announcement bar
+            closeAnnouncement.addEventListener('click', function() {
+                hideAnnouncement();
+                localStorage.setItem('announcementClosed', 'true');
+            });
+        }
+
+        // Hide announcement bar
+        function hideAnnouncement() {
+            announcementBar.style.display = 'none';
+            document.body.classList.add('announcement-hidden');
+            
+            // Adjust hero section margin
+            const hero = document.querySelector('.hero');
+            hero.style.marginTop = '70px';
         }
 
         // Open product modal
