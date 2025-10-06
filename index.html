@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozan Herbal Pharma - Nature's Harmony & Modern Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Logo Splash Screen Styles */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+
+        .splash-logo-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(27, 79, 114, 0.3);
+        }
+
+        .splash-logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .splash-logo-text {
+            text-align: center;
+        }
+
+        .splash-logo-main {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .splash-logo-sub {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--dark-gray);
+        }
+
+        @keyframes logoPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Hide main content initially */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        body.content-visible {
+            opacity: 1;
+        }
+
+        :root {
+            --primary-blue: #1B4F72;
+            --accent-blue: #4DA6FF;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --announcement-bg: #FFD700;
+            --announcement-text: #1B4F72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: var(--announcement-bg);
+            color: var(--announcement-text);
+            text-align: center;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            direction: rtl;
+            transition: var(--transition);
+        }
+
+        .announcement-bar.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .announcement-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .announcement-icon {
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .close-announcement {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--announcement-text);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .close-announcement:hover {
+            opacity: 1;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 44px;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        body.announcement-hidden header {
+            top: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--dark-gray);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(27, 79, 114, 0.7), rgba(27, 79, 114, 0.7)), 
+                        url('https://i.ibb.co/ycW5gHn0/Generated-Image-October-03-2025-8-02-PM.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 114px;
+        }
+
+        body.announcement-hidden .hero {
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+
+        /* Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .product-variations {
+            margin-bottom: 1rem;
+        }
+
+        .variation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        /* Cart Drawer */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background-color: var(--white);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 1100;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .cart-drawer.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-variation {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .quantity-btn {
+            background-color: var(--light-gray);
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .quantity-value {
+            margin: 0 0.5rem;
+        }
+
+        .cart-item-price {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .remove-item {
+            color: #ff4d4d;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .checkout-form {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Product Modal */
+        .product-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--white);
+            width: 90%;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            z-index: 1100;
+            display: none;
+            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .product-modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        .modal-body {
+            display: flex;
+            padding: 1.5rem;
+        }
+
+        .modal-image {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-gallery {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .gallery-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .gallery-thumb.active {
+            opacity: 1;
+            border: 2px solid var(--accent-blue);
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-details {
+            flex: 1;
+        }
+
+        .modal-description {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-variations {
+            margin-bottom: 1.5rem;
+        }
+
+        .variation-option {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .variation-option:hover {
+            background-color: var(--light-gray);
+        }
+
+        .variation-option.selected {
+            background-color: rgba(77, 166, 255, 0.1);
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 0.5rem;
+        }
+
+        .modal-quantity {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .quantity-label {
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-gray);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            z-index: 2000;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* WhatsApp Direct Button */
+        .whatsapp-direct {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .whatsapp-direct:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        .whatsapp-direct i {
+            color: white;
+            font-size: 30px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .modal-body, .contact-content {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .announcement-bar {
+                font-size: 0.9rem;
+                padding: 8px 0;
+            }
+
+            .announcement-text {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .close-announcement {
+                right: 10px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 114px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 114px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: var(--transition);
+            }
+
+            body.announcement-hidden .nav-links {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .cart-drawer {
+                max-width: 100%;
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .modal-price {
+                font-size: 1.1rem;
+            }
+
+            .whatsapp-direct {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-direct i {
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .announcement-bar {
+                font-size: 0.8rem;
+                padding: 6px 0;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .product-modal {
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .main-image {
+                height: 250px;
+            }
+
+            .gallery-thumb {
+                width: 60px;
+                height: 60px;
+            }
+
+            .modal-footer {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">
+            <div class="splash-logo-image">
+                <img src="https://i.ibb.co/RkjpHc8T/480530406-4088587948087057-1211286110796639994-n-removebg-preview.png" alt="Ozan Herbal Pharma Logo">
+            </div>
+            <div class="splash-logo-text">
+                <div class="splash-logo-main">Ozan Herbal Pharma</div>
+                <div class="splash-logo-sub">Nature's Harmony & Modern Care</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container">
+            <div class="announcement-text">
+                <i class="fas fa-bullhorn announcement-icon"></i>
+                <span>ڈسٹری بیوٹر ہول سیل پر دستیاب ہے۔</span>
+            </div>
+        </div>
+        <button class="close-announcement" id="closeAnnouncement">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-image">
+                        <img src="https://i.ibb.co/RkjpHc8T/480530406-4088587948087057-1211286110796639994-n-removebg-preview.png" alt="Ozan Herbal Pharma Logo">
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">Ozan Herbal Pharma</span>
+                        <span class="logo-sub">Nature's Harmony & Modern Care</span>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Ozan Herbal Pharma</h1>
+            <p>Nature's Harmony & Modern Care</p>
+            <a href="#products" class="btn">Explore Products</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Address</h3>
+                        <p>DIVISON FD (RGDS 523912) (TM-0941-2), Faisalabad</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Phone</h3>
+                        <p>03078474227 (WhatsApp order enabled)</p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.272278856832!2d73.0798573151416!3d31.48110098137853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392242a895e33161%3A0x5f7e7e9b8a5e9c8e!2sFaisalabad%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1639996543210!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© Ozan Herbal Pharma 2025. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="close-cart" id="closeCart">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">Rs. 0</span>
+        </div>
+        <div class="checkout-form">
+            <div class="form-group">
+                <label for="customerName">Name</label>
+                <input type="text" id="customerName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">Phone</label>
+                <input type="tel" id="customerPhone" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="customerAddress">Address</label>
+                <textarea id="customerAddress" class="form-control" rows="3" required></textarea>
+            </div>
+            <button class="btn whatsapp-btn" id="whatsappOrder">
+                <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalProductName">Product Name</h3>
+                <button class="close-modal" id="closeModal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <div class="main-image">
+                        <img id="modalMainImage" src="" alt="Product Image">
+                    </div>
+                    <div class="image-gallery" id="imageGallery">
+                        <!-- Gallery thumbnails will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-description">
+                        <p id="modalProductDescription">Product description will appear here.</p>
+                    </div>
+                    <div class="modal-variations" id="modalVariations">
+                        <!-- Variations will be dynamically added here -->
+                    </div>
+                    <div class="modal-quantity">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" id="decreaseQuantity">-</button>
+                            <span class="quantity-value" id="modalQuantity">1</span>
+                            <button class="quantity-btn" id="increaseQuantity">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-price" id="modalPrice">Rs. 0</div>
+                <button class="btn" id="addToCartModal">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Direct Button -->
+    <a href="https://wa.me/923078474227?text=Hello%20Ozan%20Pharmacy!%20I'm%20interested%20in%20your%20products.%20Can%20you%20please%20share%20more%20information?" 
+       class="whatsapp-direct" 
+       target="_blank"
+       id="whatsappDirect">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Logo Splash Screen Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const splashScreen = document.getElementById('splashScreen');
+            const body = document.body;
+            
+            // Show splash screen for 2.5 seconds
+            setTimeout(function() {
+                splashScreen.classList.add('hidden');
+                
+                // Show main content after splash screen fades out
+                setTimeout(function() {
+                    body.classList.add('content-visible');
+                }, 800);
+            }, 2500);
+            
+            // Rest of your existing initialization code
+            renderProducts();
+            setupEventListeners();
+            updateCart();
+            
+            // Check if announcement was previously closed
+            if (localStorage.getItem('announcementClosed') === 'true') {
+                hideAnnouncement();
+            }
+        });
+
+        // Product Data with Multiple Images
+        const products = [
+            {
+                id: 1,
+                name: "Almond Oil",
+                description: "Pure almond oil extracted from premium quality almonds. Rich in vitamins and nutrients for skin and hair care. Our almond oil is cold-pressed to retain all its natural goodness.",
+                images: [
+                    "https://i.ibb.co/20qtS4vW/Generated-Image-October-03-2025-6-35-PM.png",
+                    "https://i.ibb.co/XrHvnQB1/Generated-Image-October-03-2025-6-36-PM.png",
+                    "https://plus.unsplash.com/premium_photo-1675237625910-e5d354c03987?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMhvK09pMw6nvN81BsABm2wyGg24cu1BT3nA&s"
+                ],
+                variations: [
+                    { size: "10ml", price: 100 },
+                    { size: "25ml", price: 200 },
+                    { size: "50ml", price: 320 },
+                    { size: "100ml", price: 550 }
+                ]
+            },
+            {
+                id: 2,
+                name: "Castor Oil",
+                description: "100% pure castor oil known for its hair growth and skin moisturizing properties. Our castor oil is extracted using traditional methods to preserve its natural benefits.",
+                images: [
+                    "https://i.ibb.co/0yTCfpWy/Whats-App-Image-2025-10-06-at-21-41-19-0d983961.jpg",
+                    "https://i.ibb.co/wFNMP2Lt/Generated-Image-October-04-2025-9-43-AM.png",
+                    "https://balancespaboca.com/wp-content/uploads/2014/05/CastorOil-1024x683.webp"
+                ],
+                variations: [
+                    { size: "25ml", price: 90 },
+                    { size: "50ml", price: 140 },
+                    { size: "100ml", price: 200 }
+                ]
+            },
+            {
+                id: 3,
+                name: "Olive Oil",
+                description: "Extra virgin olive oil with numerous health benefits and culinary uses. Our olive oil is sourced from the finest olives and processed to maintain its purity.",
+                images: [
+                    "https://i.ibb.co/h14LJthH/Generated-Image-October-05-2025-2-47-PM.png",
+                    "https://i.ibb.co/Z6pq53z5/Generated-Image-October-04-2025-9-58-AM.png",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1c3Vlkj-lBtho71tx9D51hdqvAycvElCvoQ&s",
+                    "https://images.everydayhealth.com/images/diet-nutrition/olive-oil-nutrition-facts-benefits-for-skin-and-health-side-effects-more-722x406.jpg?sfvrsn=d588ad6_1"
+                ],
+                variations: [
+                    { size: "25ml", price: 120 },
+                    { size: "50ml", price: 180 },
+                    { size: "Box Bottle 100ml", price: 360 },
+                    { size: "Loz Packing 500ml", price: 800 }
+                ]
+            },
+            {
+                id: 4,
+                name: "Black Seed Oil (Kalwanji Oil)",
+                description: "Pure black seed oil known for its immune-boosting and anti-inflammatory properties. Our black seed oil is carefully extracted to preserve its therapeutic qualities.",
+                images: [
+                    "https://i.ibb.co/5f2SYJJ/Generated-Image-October-04-2025-10-08-AM.png",
+                    "https://i.ibb.co/GQWDRFfV/Generated-Image-October-04-2025-10-07-AM.png"
+                ],
+                variations: [
+                    { size: "25ml", price: 120 },
+                    { size: "50ml", price: 180 }
+                ]
+            },
+            {
+                id: 5,
+                name: "Almond Oil (Loz Packing)",
+                description: "Premium almond oil in larger packaging for extended use and better value. Our loz packing ensures the oil remains fresh and potent for longer periods.",
+                images: [
+                    "https://i.ibb.co/S4M2dhZ1/Generated-Image-October-04-2025-10-53-AM.png",
+                    "https://i.ibb.co/sp3cx0Py/Generated-Image-October-04-2025-10-52-AM.png",
+                    "https://i.ibb.co/gL5VVrzz/Generated-Image-October-04-2025-10-54-AM.png"
+                ],
+                variations: [
+                    { size: "250ml", price: 900 },
+                    { size: "500ml", price: 1800 },
+                    { size: "1000ml", price: 3600 }
+                ]
+            },
+            {
+                id: 6,
+                name: "Castor Oil (Loz Packing)",
+                description: "Pure castor oil in larger packaging for extended use and better value. Ideal for regular users who appreciate the benefits of castor oil.",
+                images: [
+                    "https://i.ibb.co/prXjYPcZ/Generated-Image-October-04-2025-9-46-AM.png",
+                    "https://images.surferseo.art/f1c72f06-da09-4e5c-bd2f-9ea35c17b4c0.jpeg"
+                ],
+                variations: [
+                    { size: "250ml", price: 400 },
+                    { size: "500ml", price: 600 },
+                    { size: "1000ml", price: 950 }
+                ]
+            },
+            {
+                id: 7,
+                name: "Pumpkin Seed Oil",
+                description: "Nutrient-rich pumpkin seed oil with numerous health benefits. Extracted from carefully selected pumpkin seeds to ensure maximum potency.",
+                images: [
+                    "https://i.ibb.co/p6mKqqT2/Generated-Image-October-04-2025-11-07-AM.png",
+                    "https://i.ibb.co/FkcRbDF8/Generated-Image-October-04-2025-11-09-AM.png"
+                ],
+                price: 160,
+                size: "60ml"
+            },
+            {
+                id: 8,
+                name: "Fish Oil",
+                description: "High-quality fish oil rich in Omega-3 fatty acids for heart and brain health. Our fish oil is purified to remove any impurities while retaining its nutritional value.",
+                images: [
+                    "https://wholeheartfamilymed.com/images/advanced-testing/vitamins/omega-3-nav.jpg"
+                ],
+                price: 180,
+                size: "60ml"
+            },
+            {
+                id: 9,
+                name: "Arugula Oil (Taramira Oil)",
+                description: "Pure arugula oil extracted from taramira seeds, known for its hair benefits. This traditional oil has been used for generations for hair care.",
+                images: [
+                    "https://i.ibb.co/YF7SBp99/Generated-Image-October-04-2025-11-31-AM.png",
+                    "https://i.ibb.co/hRkYFTRW/Generated-Image-October-04-2025-11-30-AM.png"
+                ],
+                price: 180,
+                size: "60ml"
+            },
+            {
+                id: 10,
+                name: "Jasmine Oil (Chambeli Oil)",
+                description: "Fragrant jasmine oil with calming properties and a delightful aroma. Extracted from fresh jasmine flowers through a delicate process.",
+                images: [
+                    "https://i.ibb.co/gbFj8Y45/Generated-Image-October-04-2025-11-37-AM.png",
+                    "https://i.ibb.co/dwQTHtZv/Generated-Image-October-04-2025-11-35-AM.png"
+                ],
+                price: 180,
+                size: "60ml"
+            },
+            {
+                id: 11,
+                name: "Dehniya Oil",
+                description: "Proprietary blend of oils designed to support mental clarity and focus. Our unique formulation combines traditional herbs with modern knowledge.",
+                images: [
+                    "https://i.ibb.co/C3wGwJW9/Generated-Image-October-04-2025-11-51-AM.png",
+                    "https://i.ibb.co/3mPjCrdM/Generated-Image-October-04-2025-11-49-AM.png"
+                ],
+                price: 180,
+                size: "60ml"
+            },
+            {
+                id: 12,
+                name: "Tarpin Oil",
+                description: "Proprietary blend of oils for overall wellness and vitality. This special formulation is designed to support your body's natural balance.",
+                images: [
+                    "https://i.ibb.co/1Y5FLKPq/Generated-Image-October-04-2025-12-02-PM.png"
+                ],
+                price: 180,
+                size: "60ml"
+            },
+            {
+                id: 13,
+                name: "Poppy Seed Oil",
+                description: "Pure poppy seed oil with numerous health and culinary applications. Our poppy seed oil is carefully processed to maintain its natural properties.",
+                images: [
+                    "https://i.ibb.co/VW6rmMm3/Generated-Image-October-04-2025-12-33-PM-1.png",
+                    "https://i.ibb.co/Fqbqg8QW/Generated-Image-October-04-2025-8-40-PM.png"
+                ],
+                price: 180,
+                size: "60ml"
+            },
+            {
+                id: 14,
+                name: "Coconut Oil",
+                description: "Pure coconut oil for cooking, skin, and hair care. Our coconut oil is cold-pressed to retain its natural aroma and nutritional value.",
+                images: [
+                    "https://i.ibb.co/FSv13qr/Generated-Image-October-05-2025-2-27-PM.png"
+                ],
+                price: 190,
+                size: "60ml"
+            },
+            {
+                id: 15,
+                name: "Rosemary Oil",
+                description: "Concentrated rosemary oil known for its hair growth and cognitive benefits. Extracted from fresh rosemary leaves to ensure maximum potency.",
+                images: [
+                    "https://i.ibb.co/Q7WR9yBc/Generated-Image-October-05-2025-2-33-PM.png"
+                ],
+                price: 450,
+                size: "15ml"
+            },
+            {
+                id: 16,
+                name: "Orange Oil",
+                description: "Pure orange essential oil with a refreshing citrus aroma. Our orange oil is extracted from the peel of fresh oranges for a vibrant scent.",
+                images: [
+                    "https://i.ibb.co/KzmhCPRn/Generated-Image-October-05-2025-2-36-PM.png"
+                ],
+                price: 350,
+                size: "15ml"
+            },
+            {
+                id: 17,
+                name: "Ozan Hazmoon Phaki",
+                description: "Traditional digestive aid in powder form. Our proprietary blend helps support healthy digestion and comfort after meals.",
+                images: [
+                    "https://i.ibb.co/cS8q7nbb/Generated-Image-October-04-2025-8-45-PM.png"
+                ],
+                price: 100,
+                size: "60g"
+            },
+            {
+                id: 18,
+                name: "Ozan Skin Ointment/Balm",
+                description: "Soothing balm for various skin conditions and irritations. Our gentle formulation provides relief while supporting skin health.",
+                images: [
+                    "https://i.ibb.co/wN9SqQcV/Generated-Image-October-05-2025-2-41-PM.png"
+                ],
+                price: 90,
+                size: "15g"
+            },
+            {
+                id: 19,
+                name: "Ozan Amla Hair Oil",
+                description: "Hair oil enriched with amla extract for hair growth and strength. Our special blend nourishes the scalp and promotes healthy hair.",
+                images: [
+                    "https://i.ibb.co/LDbd0HS5/Generated-Image-October-06-2025-9-37-PM.png"
+                ],
+                price: 240,
+                size: "100ml"
+            },
+            {
+                id: 20,
+                name: "Lemon Oil",
+                description: "Pure lemon essential oil with a fresh, uplifting scent. Extracted from fresh lemon peels to capture the vibrant citrus aroma.",
+                images: [
+                    "https://i.ibb.co/k663KfbQ/Generated-Image-October-05-2025-2-54-PM.png"
+                ],
+                price: 270,
+                size: "25ml"
+            },
+            {
+                id: 21,
+                name: "Fennel Seed Oil",
+                description: "Fennel seed oil known for its digestive and aromatic properties. Our fennel seed oil is carefully distilled to preserve its therapeutic qualities.",
+                images: [
+                    "https://i.ibb.co/wNvKq7s7/Generated-Image-October-06-2025-10-30-PM.png"
+                ],
+                price: 300,
+                size: "25ml"
+            },
+            {
+                id: 22,
+                name: "Cinnamon Oil",
+                description: "Warm and spicy cinnamon essential oil. Our cinnamon oil is extracted from high-quality cinnamon bark for a rich, authentic scent.",
+                images: [
+                    "https://i.ibb.co/95d5rCR/Generated-Image-October-06-2025-10-34-PM.png"
+                ],
+                price: 180,
+                size: "15ml"
+            },
+            {
+                id: 23,
+                name: "Ozan Saffron Tila Gold",
+                description: "Premium saffron-infused oil for skin care and wellness. Our luxurious blend combines the benefits of saffron with nourishing carrier oils.",
+                images: [
+                    "https://i.ibb.co/fd20KPcY/Generated-Image-October-06-2025-10-33-PM.png"
+                ],
+                price: 650,
+                size: "15ml"
+            }
+        ];
+
+        // Cart state
+        let cart = [];
+        let currentProduct = null;
+        let selectedVariation = null;
+        let modalQuantity = 1;
+        let currentImageIndex = 0;
+
+        // DOM Elements
+        const productsGrid = document.getElementById('productsGrid');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCount = document.querySelector('.cart-count');
+        const overlay = document.getElementById('overlay');
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalProductName = document.getElementById('modalProductName');
+        const modalMainImage = document.getElementById('modalMainImage');
+        const modalProductDescription = document.getElementById('modalProductDescription');
+        const modalVariations = document.getElementById('modalVariations');
+        const modalQuantityElement = document.getElementById('modalQuantity');
+        const decreaseQuantity = document.getElementById('decreaseQuantity');
+        const increaseQuantity = document.getElementById('increaseQuantity');
+        const modalPrice = document.getElementById('modalPrice');
+        const addToCartModal = document.getElementById('addToCartModal');
+        const customerName = document.getElementById('customerName');
+        const customerPhone = document.getElementById('customerPhone');
+        const customerAddress = document.getElementById('customerAddress');
+        const whatsappOrder = document.getElementById('whatsappOrder');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const imageGallery = document.getElementById('imageGallery');
+        const notification = document.getElementById('notification');
+        const announcementBar = document.getElementById('announcementBar');
+        const closeAnnouncement = document.getElementById('closeAnnouncement');
+
+        // Render products to the grid
+        function renderProducts() {
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-id', product.id);
+                
+                let priceText = '';
+                if (product.variations) {
+                    const minPrice = Math.min(...product.variations.map(v => v.price));
+                    const maxPrice = Math.max(...product.variations.map(v => v.price));
+                    priceText = `Rs. ${minPrice} - ${maxPrice}`;
+                } else {
+                    priceText = `Rs. ${product.price}`;
+                }
+                
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.images[0]}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-price">${priceText}</div>
+                        ${product.variations ? 
+                            `<div class="product-variations">
+                                ${product.variations.map(variation => 
+                                    `<div class="variation">
+                                        <span>${variation.size}</span>
+                                        <span>Rs. ${variation.price}</span>
+                                    </div>`
+                                ).join('')}
+                            </div>` : 
+                            `<div class="product-variations">
+                                <div class="variation">
+                                    <span>${product.size}</span>
+                                    <span>Rs. ${product.price}</span>
+                                </div>
+                            </div>`
+                        }
+                        <button class="btn">View Details</button>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Product card click
+            productsGrid.addEventListener('click', function(e) {
+                const productCard = e.target.closest('.product-card');
+                if (productCard) {
+                    const productId = parseInt(productCard.getAttribute('data-id'));
+                    openProductModal(productId);
+                }
+            });
+
+            // Cart icon click
+            cartIcon.addEventListener('click', openCart);
+
+            // Close cart
+            closeCart.addEventListener('click', closeCartDrawer);
+
+            // Overlay click
+            overlay.addEventListener('click', function() {
+                closeCartDrawer();
+                closeProductModal();
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', closeProductModal);
+
+            // Quantity controls
+            decreaseQuantity.addEventListener('click', function() {
+                if (modalQuantity > 1) {
+                    modalQuantity--;
+                    modalQuantityElement.textContent = modalQuantity;
+                    updateModalPrice();
+                }
+            });
+
+            increaseQuantity.addEventListener('click', function() {
+                modalQuantity++;
+                modalQuantityElement.textContent = modalQuantity;
+                updateModalPrice();
+            });
+
+            // Add to cart from modal
+            addToCartModal.addEventListener('click', addToCartFromModal);
+
+            // WhatsApp order
+            whatsappOrder.addEventListener('click', placeWhatsAppOrder);
+
+            // Contact form
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                showNotification('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+
+            // Hamburger menu
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile menu if open
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // Close cart and modal on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeCartDrawer();
+                    closeProductModal();
+                }
+            });
+
+            // Close announcement bar
+            closeAnnouncement.addEventListener('click', function() {
+                hideAnnouncement();
+                localStorage.setItem('announcementClosed', 'true');
+            });
+        }
+
+        // Hide announcement bar
+        function hideAnnouncement() {
+            announcementBar.classList.add('hidden');
+            document.body.classList.add('announcement-hidden');
+        }
+
+        // Open product modal
+        function openProductModal(productId) {
+            currentProduct = products.find(p => p.id === productId);
+            if (!currentProduct) return;
+
+            modalProductName.textContent = currentProduct.name;
+            modalMainImage.src = currentProduct.images[0];
+            modalProductDescription.textContent = currentProduct.description;
+            
+            // Reset quantity and image index
+            modalQuantity = 1;
+            modalQuantityElement.textContent = modalQuantity;
+            currentImageIndex = 0;
+            
+            // Render image gallery
+            imageGallery.innerHTML = '';
+            currentProduct.images.forEach((image, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = 'gallery-thumb';
+                if (index === 0) {
+                    thumb.classList.add('active');
+                }
+                thumb.innerHTML = `<img src="${image}" alt="${currentProduct.name} ${index + 1}">`;
+                thumb.addEventListener('click', function() {
+                    document.querySelectorAll('.gallery-thumb').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    modalMainImage.src = image;
+                    currentImageIndex = index;
+                });
+                imageGallery.appendChild(thumb);
+            });
+            
+            // Render variations
+            modalVariations.innerHTML = '';
+            if (currentProduct.variations) {
+                currentProduct.variations.forEach((variation, index) => {
+                    const variationOption = document.createElement('div');
+                    variationOption.className = 'variation-option';
+                    if (index === 0) {
+                        variationOption.classList.add('selected');
+                        selectedVariation = variation;
+                    }
+                    variationOption.innerHTML = `
+                        <span>${variation.size}</span>
+                        <span>Rs. ${variation.price}</span>
+                    `;
+                    variationOption.addEventListener('click', function() {
+                        document.querySelectorAll('.variation-option').forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                        this.classList.add('selected');
+                        selectedVariation = variation;
+                        updateModalPrice();
+                    });
+                    modalVariations.appendChild(variationOption);
+                });
+            } else {
+                // For products without variations
+                selectedVariation = {
+                    size: currentProduct.size,
+                    price: currentProduct.price
+                };
+                const variationOption = document.createElement('div');
+                variationOption.className = 'variation-option selected';
+                variationOption.innerHTML = `
+                    <span>${currentProduct.size}</span>
+                    <span>Rs. ${currentProduct.price}</span>
+                `;
+                modalVariations.appendChild(variationOption);
+            }
+            
+            updateModalPrice();
+            productModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        // Close product modal
+        function closeProductModal() {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Update modal price based on selected variation and quantity
+        function updateModalPrice() {
+            if (selectedVariation) {
+                const totalPrice = selectedVariation.price * modalQuantity;
+                modalPrice.textContent = `Rs. ${totalPrice}`;
+            }
+        }
+
+        // Add to cart from modal
+        function addToCartFromModal() {
+            if (!currentProduct || !selectedVariation) return;
+
+            const cartItem = {
+                id: currentProduct.id,
+                name: currentProduct.name,
+                image: currentProduct.images[0],
+                variation: selectedVariation.size,
+                price: selectedVariation.price,
+                quantity: modalQuantity
+            };
+
+            // Check if item already exists in cart
+            const existingItemIndex = cart.findIndex(item => 
+                item.id === cartItem.id && item.variation === cartItem.variation
+            );
+
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += cartItem.quantity;
+            } else {
+                cart.push(cartItem);
+            }
+
+            updateCart();
+            closeProductModal();
+            showNotification(`${currentProduct.name} added to cart!`);
+        }
+
+        // Open cart drawer
+        function openCart() {
+            cartDrawer.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        // Close cart drawer
+        function closeCartDrawer() {
+            cartDrawer.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Update cart display
+        function updateCart() {
+            // Update cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Your cart is empty</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-variation">${item.variation}</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn" data-index="${index}" data-action="decrease">-</button>
+                                <span class="quantity-value">${item.quantity}</span>
+                                <button class="quantity-btn" data-index="${index}" data-action="increase">+</button>
+                            </div>
+                            <div class="cart-item-price">Rs. ${item.price * item.quantity}</div>
+                            <button class="remove-item" data-index="${index}">Remove</button>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItemElement);
+                });
+            }
+            
+            // Update cart total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `Rs. ${total}`;
+            
+            // Update cart count
+            const itemCount = cart.reduce((count, item) => count + item.quantity, 0);
+            cartCount.textContent = itemCount;
+            
+            // Add event listeners to cart item controls
+            document.querySelectorAll('.quantity-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const action = this.getAttribute('data-action');
+                    
+                    if (action === 'increase') {
+                        cart[index].quantity++;
+                    } else if (action === 'decrease') {
+                        if (cart[index].quantity > 1) {
+                            cart[index].quantity--;
+                        } else {
+                            cart.splice(index, 1);
+                        }
+                    }
+                    
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+
+        // Place WhatsApp order
+        function placeWhatsAppOrder() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!');
+                return;
+            }
+            
+            if (!customerName.value || !customerPhone.value || !customerAddress.value) {
+                showNotification('Please fill in all your details before placing an order.');
+                return;
+            }
+            
+            let message = `Hello Ozan Pharmacy! I would like to place an order:\n\n`;
+            
+            cart.forEach(item => {
+                message += `• ${item.name} (${item.variation}) - ${item.quantity} x Rs. ${item.price} = Rs. ${item.price * item.quantity}\n`;
+            });
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\nTotal: Rs. ${total}\n\n`;
+            message += `Customer Details:\n`;
+            message += `Name: ${customerName.value}\n`;
+            message += `Phone: ${customerPhone.value}\n`;
+            message += `Address: ${customerAddress.value}\n\n`;
+            message += `Thank you!`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/923078474227?text=${encodedMessage}`;
+            
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Clear cart after order
+            cart = [];
+            updateCart();
+            closeCartDrawer();
+            showNotification('Order placed successfully! Check your WhatsApp.');
+        }
+
+        // Show notification
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
