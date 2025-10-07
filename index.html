@@ -15,6 +15,8 @@
             --dark-gray: #333333;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+            --discount-red: #FF4757;
+            --discount-green: #2ED573;
         }
 
         * {
@@ -222,11 +224,26 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: pointer;
+            position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--discount-red), #FF6B81);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
         }
 
         .product-image {
@@ -258,10 +275,20 @@
         }
 
         .product-price {
-            font-size: 1.1rem;
-            font-weight: 500;
             margin-bottom: 1rem;
-            color: var(--dark-gray);
+        }
+
+        .original-price {
+            font-size: 0.9rem;
+            color: #888;
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+
+        .discounted-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--discount-green);
         }
 
         .product-packaging {
@@ -385,15 +412,40 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
         }
 
         .quantity-value {
             margin: 0 0.5rem;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
         }
 
         .cart-item-price {
             font-weight: 600;
             color: var(--primary-blue);
+        }
+
+        .cart-item-discount {
+            color: var(--discount-green);
+            font-size: 0.9rem;
         }
 
         .remove-item {
@@ -402,6 +454,11 @@
             border: none;
             cursor: pointer;
             font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .remove-item:hover {
+            color: #cc0000;
         }
 
         .cart-total {
@@ -409,9 +466,28 @@
             justify-content: space-between;
             font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             padding-top: 1rem;
             border-top: 1px solid #eee;
+        }
+
+        .cart-discount {
+            display: flex;
+            justify-content: space-between;
+            color: var(--discount-green);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .cart-final-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
         }
 
         .checkout-form {
@@ -498,12 +574,26 @@
             align-items: center;
             padding: 1.5rem;
             border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .modal-discount-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, var(--discount-red), #FF6B81);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
         }
 
         .modal-title {
             font-size: 1.5rem;
             color: var(--primary-blue);
             font-weight: 600;
+            margin-left: 80px;
         }
 
         .close-modal {
@@ -530,6 +620,7 @@
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 1rem;
+            position: relative;
         }
 
         .main-image img {
@@ -608,6 +699,19 @@
             padding-left: 0.5rem;
         }
 
+        .variation-original-price {
+            font-size: 0.9rem;
+            color: #888;
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+
+        .variation-discounted-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--discount-green);
+        }
+
         .modal-quantity {
             display: flex;
             align-items: center;
@@ -617,6 +721,12 @@
         .quantity-label {
             margin-right: 1rem;
             font-weight: 500;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .modal-footer {
@@ -631,6 +741,11 @@
             font-size: 1.3rem;
             font-weight: 600;
             color: var(--primary-blue);
+        }
+
+        .modal-discount-price {
+            color: var(--discount-green);
+            font-size: 1.1rem;
         }
 
         /* Contact Section */
@@ -806,6 +921,16 @@
             .whatsapp-direct i {
                 font-size: 25px;
             }
+
+            .modal-title {
+                margin-left: 0;
+                margin-top: 40px;
+            }
+
+            .modal-discount-badge {
+                top: 10px;
+                left: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -959,8 +1084,16 @@
             <!-- Cart items will be dynamically added here -->
         </div>
         <div class="cart-total">
+            <span>Subtotal:</span>
+            <span id="cartSubtotal">Rs. 0</span>
+        </div>
+        <div class="cart-discount">
+            <span>40% Discount:</span>
+            <span id="cartDiscount">- Rs. 0</span>
+        </div>
+        <div class="cart-final-total">
             <span>Total:</span>
-            <span id="cartTotal">Rs. 0</span>
+            <span id="cartFinalTotal">Rs. 0</span>
         </div>
         <div class="checkout-form">
             <div class="form-group">
@@ -988,6 +1121,7 @@
     <div class="product-modal" id="productModal">
         <div class="modal-content">
             <div class="modal-header">
+                <div class="modal-discount-badge">40% OFF</div>
                 <h3 class="modal-title" id="modalProductName">Product Name</h3>
                 <button class="close-modal" id="closeModal">✕</button>
             </div>
@@ -1014,14 +1148,17 @@
                         <span class="quantity-label">Quantity:</span>
                         <div class="quantity-controls">
                             <button class="quantity-btn" id="decreaseQuantity">-</button>
-                            <span class="quantity-value" id="modalQuantity">1</span>
+                            <input type="number" class="quantity-input" id="modalQuantityInput" value="1" min="1">
                             <button class="quantity-btn" id="increaseQuantity">+</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="modal-price" id="modalPrice">Rs. 0</div>
+                <div class="modal-price">
+                    <div>Original: <span id="modalOriginalPrice">Rs. 0</span></div>
+                    <div class="modal-discount-price">Discounted: <span id="modalDiscountedPrice">Rs. 0</span></div>
+                </div>
                 <button class="btn" id="addToCartModal">Add to Cart</button>
             </div>
         </div>
@@ -1062,7 +1199,7 @@
                 description: "100% pure castor oil known for its hair growth and skin moisturizing properties. Our castor oil is extracted using traditional methods to preserve its natural benefits.",
                 packaging: "15pcs per packet",
                 images: [
-                    "https://i.ibb.co/prXjYPcZ/Generated-Image-October-04-2025-9-46-AM.png",
+                    "https://i.ibb.co/JwpLHmt6/Whats-App-Image-2025-10-06-at-21-41-19-0d983961.jpg",
                     "https://i.ibb.co/wFNMP2Lt/Generated-Image-October-04-2025-9-43-AM.png",
                 ],
                 variations: [
@@ -1077,7 +1214,7 @@
                 description: "Extra virgin olive oil with numerous health benefits and culinary uses. Our olive oil is sourced from the finest olives and processed to maintain its purity.",
                 packaging: "15pcs per packet",
                 images: [
-                    "https://i.ibb.co/mrLpXQ7X/Generated-Image-October-04-2025-10-00-AM.png",
+                    "https://i.ibb.co/h14LJthH/Generated-Image-October-05-2025-2-47-PM.png",
                     "https://i.ibb.co/Z6pq53z5/Generated-Image-October-04-2025-9-58-AM.png",
                 ],
                 variations: [
@@ -1274,7 +1411,7 @@
                 description: "Hair oil enriched with amla extract for hair growth and strength. Our special blend nourishes the scalp and promotes healthy hair.",
                 packaging: "15pcs per packet",
                 images: [
-                    "https://i.ibb.co/h14LJthH/Generated-Image-October-05-2025-2-47-PM.png"
+                    "https://i.ibb.co/0jnQP0NS/Generated-Image-October-06-2025-9-37-PM.png"
                 ],
                 price: 240,
                 size: "100ml"
@@ -1307,7 +1444,7 @@
                 description: "Warm and spicy cinnamon essential oil. Our cinnamon oil is extracted from high-quality cinnamon bark for a rich, authentic scent.",
                 packaging: "15pcs per packet",
                 images: [
-                    "https://via.placeholder.com/600x400/1B4F72/FFFFFF?text=Cinnamon+Oil"
+                    "https://i.ibb.co/xKTMGLWt/Generated-Image-October-06-2025-10-34-PM.png"
                 ],
                 price: 180,
                 size: "15ml"
@@ -1318,10 +1455,25 @@
                 description: "Premium saffron-infused oil for skin care and wellness. Our luxurious blend combines the benefits of saffron with nourishing carrier oils.",
                 packaging: "15pcs per packet",
                 images: [
-                    "https://via.placeholder.com/600x400/1B4F72/FFFFFF?text=Ozan+Saffron+Tila+Gold"
+                    "https://i.ibb.co/7TMtFpM/Generated-Image-October-06-2025-10-33-PM.png"
                 ],
                 price: 650,
                 size: "15ml"
+            },
+            {
+                id: 24,
+                name: "ARQ-E-GULAB",
+                description: "Pure and natural rose water (Arq-e-Gulab) extracted from fresh rose petals through traditional steam distillation. This fragrant rose water is perfect for skin care, as a natural toner, in religious ceremonies, and as a flavoring agent in desserts and drinks. Known for its soothing, hydrating, and anti-inflammatory properties that help refresh and rejuvenate the skin while providing a delightful floral aroma.",
+                packaging: "15pcs per packet",
+                images: [
+                    "https://i.ibb.co/PGfSfm2y/Generated-Image-October-07-2025-11-15-PM.png"
+                    
+                ],
+                variations: [
+                    { size: "Dropper", price: 60 },
+                    { size: "50ml", price: 100 },
+                    { size: "100ml", price: 220 }
+                ]
             }
         ];
 
@@ -1331,6 +1483,7 @@
         let selectedVariation = null;
         let modalQuantity = 1;
         let currentImageIndex = 0;
+        const DISCOUNT_RATE = 0.4; // 40% discount
 
         // DOM Elements
         const productsGrid = document.getElementById('productsGrid');
@@ -1338,7 +1491,9 @@
         const cartDrawer = document.getElementById('cartDrawer');
         const closeCart = document.getElementById('closeCart');
         const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
+        const cartSubtotal = document.getElementById('cartSubtotal');
+        const cartDiscount = document.getElementById('cartDiscount');
+        const cartFinalTotal = document.getElementById('cartFinalTotal');
         const cartCount = document.querySelector('.cart-count');
         const overlay = document.getElementById('overlay');
         const productModal = document.getElementById('productModal');
@@ -1348,10 +1503,11 @@
         const modalProductDescription = document.getElementById('modalProductDescription');
         const modalPackaging = document.getElementById('modalPackaging');
         const modalVariations = document.getElementById('modalVariations');
-        const modalQuantityElement = document.getElementById('modalQuantity');
+        const modalQuantityInput = document.getElementById('modalQuantityInput');
+        const modalOriginalPrice = document.getElementById('modalOriginalPrice');
+        const modalDiscountedPrice = document.getElementById('modalDiscountedPrice');
         const decreaseQuantity = document.getElementById('decreaseQuantity');
         const increaseQuantity = document.getElementById('increaseQuantity');
-        const modalPrice = document.getElementById('modalPrice');
         const addToCartModal = document.getElementById('addToCartModal');
         const customerName = document.getElementById('customerName');
         const customerPhone = document.getElementById('customerPhone');
@@ -1369,6 +1525,11 @@
             updateCart();
         });
 
+        // Calculate discounted price
+        function calculateDiscountedPrice(originalPrice) {
+            return Math.round(originalPrice * (1 - DISCOUNT_RATE));
+        }
+
         // Render products to the grid
         function renderProducts() {
             productsGrid.innerHTML = '';
@@ -1382,12 +1543,22 @@
                 if (product.variations) {
                     const minPrice = Math.min(...product.variations.map(v => v.price));
                     const maxPrice = Math.max(...product.variations.map(v => v.price));
-                    priceText = `Rs. ${minPrice} - ${maxPrice}`;
+                    const minDiscounted = calculateDiscountedPrice(minPrice);
+                    const maxDiscounted = calculateDiscountedPrice(maxPrice);
+                    priceText = `
+                        <span class="original-price">Rs. ${minPrice} - ${maxPrice}</span>
+                        <span class="discounted-price">Rs. ${minDiscounted} - ${maxDiscounted}</span>
+                    `;
                 } else {
-                    priceText = `Rs. ${product.price}`;
+                    const discountedPrice = calculateDiscountedPrice(product.price);
+                    priceText = `
+                        <span class="original-price">Rs. ${product.price}</span>
+                        <span class="discounted-price">Rs. ${discountedPrice}</span>
+                    `;
                 }
                 
                 productCard.innerHTML = `
+                    <div class="discount-badge">40% OFF</div>
                     <div class="product-image">
                         <img src="${product.images[0]}" alt="${product.name}">
                     </div>
@@ -1397,17 +1568,25 @@
                         <div class="product-price">${priceText}</div>
                         ${product.variations ? 
                             `<div class="product-variations">
-                                ${product.variations.map(variation => 
-                                    `<div class="variation">
-                                        <span>${variation.size}</span>
-                                        <span>Rs. ${variation.price}</span>
-                                    </div>`
-                                ).join('')}
+                                ${product.variations.map(variation => {
+                                    const discountedPrice = calculateDiscountedPrice(variation.price);
+                                    return `
+                                        <div class="variation">
+                                            <span>${variation.size}</span>
+                                            <span>
+                                                <span class="original-price">Rs. ${variation.price}</span>
+                                                <span class="discounted-price">Rs. ${discountedPrice}</span>
+                                            </span>
+                                        </div>`
+                                }).join('')}
                             </div>` : 
                             `<div class="product-variations">
                                 <div class="variation">
                                     <span>${product.size}</span>
-                                    <span>Rs. ${product.price}</span>
+                                    <span>
+                                        <span class="original-price">Rs. ${product.price}</span>
+                                        <span class="discounted-price">Rs. ${calculateDiscountedPrice(product.price)}</span>
+                                    </span>
                                 </div>
                             </div>`
                         }
@@ -1449,14 +1628,25 @@
             decreaseQuantity.addEventListener('click', function() {
                 if (modalQuantity > 1) {
                     modalQuantity--;
-                    modalQuantityElement.textContent = modalQuantity;
+                    modalQuantityInput.value = modalQuantity;
                     updateModalPrice();
                 }
             });
 
             increaseQuantity.addEventListener('click', function() {
                 modalQuantity++;
-                modalQuantityElement.textContent = modalQuantity;
+                modalQuantityInput.value = modalQuantity;
+                updateModalPrice();
+            });
+
+            // Manual quantity input
+            modalQuantityInput.addEventListener('input', function() {
+                let value = parseInt(this.value);
+                if (isNaN(value) || value < 1) {
+                    value = 1;
+                }
+                modalQuantity = value;
+                this.value = value;
                 updateModalPrice();
             });
 
@@ -1515,7 +1705,7 @@
             
             // Reset quantity and image index
             modalQuantity = 1;
-            modalQuantityElement.textContent = modalQuantity;
+            modalQuantityInput.value = modalQuantity;
             currentImageIndex = 0;
             
             // Render image gallery
@@ -1542,6 +1732,7 @@
             modalVariations.innerHTML = '';
             if (currentProduct.variations) {
                 currentProduct.variations.forEach((variation, index) => {
+                    const discountedPrice = calculateDiscountedPrice(variation.price);
                     const variationOption = document.createElement('div');
                     variationOption.className = 'variation-option';
                     if (index === 0) {
@@ -1550,7 +1741,10 @@
                     }
                     variationOption.innerHTML = `
                         <span>${variation.size}</span>
-                        <span>Rs. ${variation.price}</span>
+                        <span>
+                            <span class="variation-original-price">Rs. ${variation.price}</span>
+                            <span class="variation-discounted-price">Rs. ${discountedPrice}</span>
+                        </span>
                     `;
                     variationOption.addEventListener('click', function() {
                         document.querySelectorAll('.variation-option').forEach(opt => {
@@ -1568,11 +1762,15 @@
                     size: currentProduct.size,
                     price: currentProduct.price
                 };
+                const discountedPrice = calculateDiscountedPrice(currentProduct.price);
                 const variationOption = document.createElement('div');
                 variationOption.className = 'variation-option selected';
                 variationOption.innerHTML = `
                     <span>${currentProduct.size}</span>
-                    <span>Rs. ${currentProduct.price}</span>
+                    <span>
+                        <span class="variation-original-price">Rs. ${currentProduct.price}</span>
+                        <span class="variation-discounted-price">Rs. ${discountedPrice}</span>
+                    </span>
                 `;
                 modalVariations.appendChild(variationOption);
             }
@@ -1591,8 +1789,10 @@
         // Update modal price based on selected variation and quantity
         function updateModalPrice() {
             if (selectedVariation) {
-                const totalPrice = selectedVariation.price * modalQuantity;
-                modalPrice.textContent = `Rs. ${totalPrice}`;
+                const originalTotal = selectedVariation.price * modalQuantity;
+                const discountedTotal = calculateDiscountedPrice(selectedVariation.price) * modalQuantity;
+                modalOriginalPrice.textContent = `Rs. ${originalTotal}`;
+                modalDiscountedPrice.textContent = `Rs. ${discountedTotal}`;
             }
         }
 
@@ -1605,7 +1805,8 @@
                 name: currentProduct.name,
                 image: currentProduct.images[0],
                 variation: selectedVariation.size,
-                price: selectedVariation.price,
+                originalPrice: selectedVariation.price,
+                discountedPrice: calculateDiscountedPrice(selectedVariation.price),
                 quantity: modalQuantity
             };
 
@@ -1646,6 +1847,8 @@
                 cartItems.innerHTML = '<p>Your cart is empty</p>';
             } else {
                 cart.forEach((item, index) => {
+                    const originalTotal = item.originalPrice * item.quantity;
+                    const discountedTotal = item.discountedPrice * item.quantity;
                     const cartItemElement = document.createElement('div');
                     cartItemElement.className = 'cart-item';
                     cartItemElement.innerHTML = `
@@ -1656,11 +1859,14 @@
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-variation">${item.variation}</div>
                             <div class="cart-item-quantity">
-                                <button class="quantity-btn" data-index="${index}" data-action="decrease">-</button>
-                                <span class="quantity-value">${item.quantity}</span>
-                                <button class="quantity-btn" data-index="${index}" data-action="increase">+</button>
+                                <button class="quantity-btn decrease-btn" data-index="${index}">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${index}">
+                                <button class="quantity-btn increase-btn" data-index="${index}">+</button>
                             </div>
-                            <div class="cart-item-price">Rs. ${item.price * item.quantity}</div>
+                            <div class="cart-item-price">
+                                <div>Rs. ${discountedTotal}</div>
+                                <div class="cart-item-discount">Saved: Rs. ${originalTotal - discountedTotal}</div>
+                            </div>
                             <button class="remove-item" data-index="${index}">Remove</button>
                         </div>
                     `;
@@ -1668,40 +1874,58 @@
                 });
             }
             
-            // Update cart total
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartTotal.textContent = `Rs. ${total}`;
+            // Update cart totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.originalPrice * item.quantity), 0);
+            const discountAmount = subtotal * DISCOUNT_RATE;
+            const finalTotal = subtotal - discountAmount;
+            
+            cartSubtotal.textContent = `Rs. ${subtotal}`;
+            cartDiscount.textContent = `- Rs. ${Math.round(discountAmount)}`;
+            cartFinalTotal.textContent = `Rs. ${Math.round(finalTotal)}`;
             
             // Update cart count
             const itemCount = cart.reduce((count, item) => count + item.quantity, 0);
             cartCount.textContent = itemCount;
             
             // Add event listeners to cart item controls
-            document.querySelectorAll('.quantity-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    const action = this.getAttribute('data-action');
-                    
-                    if (action === 'increase') {
-                        cart[index].quantity++;
-                    } else if (action === 'decrease') {
-                        if (cart[index].quantity > 1) {
-                            cart[index].quantity--;
-                        } else {
-                            cart.splice(index, 1);
-                        }
+            cartItems.addEventListener('click', function(e) {
+                const target = e.target;
+                
+                if (target.classList.contains('decrease-btn')) {
+                    const index = parseInt(target.getAttribute('data-index'));
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity--;
+                    } else {
+                        cart.splice(index, 1);
                     }
-                    
                     updateCart();
-                });
-            });
-            
-            document.querySelectorAll('.remove-item').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
+                }
+                
+                if (target.classList.contains('increase-btn')) {
+                    const index = parseInt(target.getAttribute('data-index'));
+                    cart[index].quantity++;
+                    updateCart();
+                }
+                
+                if (target.classList.contains('remove-item')) {
+                    const index = parseInt(target.getAttribute('data-index'));
                     cart.splice(index, 1);
                     updateCart();
-                });
+                }
+            });
+
+            // Add event listeners for manual quantity input in cart
+            cartItems.addEventListener('input', function(e) {
+                if (e.target.classList.contains('quantity-input')) {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    let value = parseInt(e.target.value);
+                    if (isNaN(value) || value < 1) {
+                        value = 1;
+                    }
+                    cart[index].quantity = value;
+                    e.target.value = value;
+                    updateCart();
+                }
             });
         }
 
@@ -1717,14 +1941,23 @@
                 return;
             }
             
+            const subtotal = cart.reduce((sum, item) => sum + (item.originalPrice * item.quantity), 0);
+            const discountAmount = subtotal * DISCOUNT_RATE;
+            const finalTotal = subtotal - discountAmount;
+            
             let message = `Hello Ozan Pharmacy! I would like to place an order:\n\n`;
             
             cart.forEach(item => {
-                message += `• ${item.name} (${item.variation}) - ${item.quantity} x Rs. ${item.price} = Rs. ${item.price * item.quantity}\n`;
+                const itemOriginalTotal = item.originalPrice * item.quantity;
+                const itemDiscountedTotal = item.discountedPrice * item.quantity;
+                message += `• ${item.name} (${item.variation}) - ${item.quantity} x Rs. ${item.discountedPrice} = Rs. ${itemDiscountedTotal}\n`;
+                message += `  (Original: Rs. ${itemOriginalTotal}, Saved: Rs. ${itemOriginalTotal - itemDiscountedTotal})\n`;
             });
             
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            message += `\nTotal: Rs. ${total}\n\n`;
+            message += `\nOrder Summary:\n`;
+            message += `Subtotal: Rs. ${subtotal}\n`;
+            message += `40% Discount: - Rs. ${Math.round(discountAmount)}\n`;
+            message += `Final Total: Rs. ${Math.round(finalTotal)}\n\n`;
             message += `Customer Details:\n`;
             message += `Name: ${customerName.value}\n`;
             message += `Phone: ${customerPhone.value}\n`;
@@ -1756,4 +1989,3 @@
     </script>
 </body>
 </html>
-
