@@ -149,10 +149,10 @@
             color: var(--primary-blue);
         }
 
-        /* Slideshow Banner */
+        /* Slideshow Banner - Mobile First Approach */
         .slideshow-container {
             position: relative;
-            height: 100vh;
+            height: 60vh; /* Mobile first - smaller height */
             margin-top: 70px;
             overflow: hidden;
         }
@@ -167,6 +167,7 @@
             transition: opacity 1s ease-in-out;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         .slide.active {
@@ -175,37 +176,43 @@
 
         .slide-content {
             position: absolute;
-            bottom: 20%;
-            left: 10%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             color: var(--white);
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            width: 90%;
             max-width: 600px;
+            padding: 1rem;
         }
 
         .slide-content h2 {
-            font-size: 3rem;
+            font-size: 1.8rem; /* Mobile first - smaller font */
             margin-bottom: 1rem;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .slide-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 1rem; /* Mobile first - smaller font */
+            margin-bottom: 1.5rem;
             font-weight: 300;
+            line-height: 1.4;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--accent-blue);
             color: var(--white);
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 1.5rem; /* Mobile first - smaller padding */
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .btn:hover {
@@ -216,16 +223,16 @@
 
         .slideshow-dots {
             position: absolute;
-            bottom: 30px;
+            bottom: 15px; /* Mobile first - closer to bottom */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            gap: 8px; /* Mobile first - smaller gap */
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px; /* Mobile first - smaller dots */
+            height: 10px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
@@ -239,22 +246,22 @@
 
         /* Sections */
         section {
-            padding: 5rem 0;
+            padding: 3rem 0; /* Mobile first - smaller padding */
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem; /* Mobile first - smaller margin */
             color: var(--primary-blue);
-            font-size: 2.2rem;
+            font-size: 1.8rem; /* Mobile first - smaller font */
             font-weight: 600;
         }
 
         /* Products */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Mobile first - smaller cards */
+            gap: 1.5rem; /* Mobile first - smaller gap */
         }
 
         .product-card {
@@ -268,8 +275,8 @@
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px); /* Mobile first - smaller hover effect */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .discount-badge {
@@ -278,16 +285,16 @@
             right: 10px;
             background: linear-gradient(135deg, var(--discount-red), #FF6B81);
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 4px 8px; /* Mobile first - smaller padding */
+            border-radius: 15px;
+            font-size: 0.7rem; /* Mobile first - smaller font */
             font-weight: 700;
             z-index: 2;
             box-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
         }
 
         .product-image {
-            height: 200px;
+            height: 180px; /* Mobile first - smaller image */
             overflow: hidden;
             position: relative;
         }
@@ -300,15 +307,15 @@
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.1);
+            transform: scale(1.05); /* Mobile first - smaller scale */
         }
 
         .product-info {
-            padding: 1.5rem;
+            padding: 1.2rem; /* Mobile first - smaller padding */
         }
 
         .product-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Mobile first - smaller font */
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--primary-blue);
@@ -319,14 +326,14 @@
         }
 
         .original-price {
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Mobile first - smaller font */
             color: #888;
             text-decoration: line-through;
             margin-right: 8px;
         }
 
         .discounted-price {
-            font-size: 1.1rem;
+            font-size: 1rem; /* Mobile first - smaller font */
             font-weight: 600;
             color: var(--discount-green);
         }
@@ -334,9 +341,9 @@
         .product-packaging {
             background-color: rgba(77, 166, 255, 0.1);
             color: var(--primary-blue);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 4px 8px; /* Mobile first - smaller padding */
+            border-radius: 12px;
+            font-size: 0.7rem; /* Mobile first - smaller font */
             font-weight: 600;
             display: inline-block;
             margin-bottom: 1rem;
@@ -350,7 +357,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.3rem;
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Mobile first - smaller font */
         }
 
         /* Cart Drawer */
@@ -366,7 +373,7 @@
             transition: var(--transition);
             z-index: 1100;
             overflow-y: auto;
-            padding: 2rem;
+            padding: 1.5rem; /* Mobile first - smaller padding */
         }
 
         .cart-drawer.active {
@@ -377,13 +384,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; /* Mobile first - smaller margin */
             padding-bottom: 1rem;
             border-bottom: 1px solid #eee;
         }
 
         .cart-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem; /* Mobile first - smaller font */
             color: var(--primary-blue);
             font-weight: 600;
         }
@@ -397,19 +404,19 @@
         }
 
         .cart-items {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; /* Mobile first - smaller margin */
         }
 
         .cart-item {
             display: flex;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
+            margin-bottom: 1.2rem; /* Mobile first - smaller margin */
+            padding-bottom: 1.2rem;
             border-bottom: 1px solid #eee;
         }
 
         .cart-item-image {
-            width: 80px;
-            height: 80px;
+            width: 70px; /* Mobile first - smaller image */
+            height: 70px;
             border-radius: 8px;
             overflow: hidden;
             margin-right: 1rem;
@@ -428,10 +435,11 @@
         .cart-item-name {
             font-weight: 600;
             margin-bottom: 0.3rem;
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .cart-item-variation {
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Mobile first - smaller font */
             color: #666;
             margin-bottom: 0.5rem;
         }
@@ -461,8 +469,8 @@
         }
 
         .quantity-input {
-            width: 50px;
-            height: 30px;
+            width: 45px; /* Mobile first - smaller input */
+            height: 28px;
             text-align: center;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -481,11 +489,12 @@
         .cart-item-price {
             font-weight: 600;
             color: var(--primary-blue);
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .cart-item-discount {
             color: var(--discount-green);
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Mobile first - smaller font */
         }
 
         .remove-item {
@@ -493,7 +502,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Mobile first - smaller font */
             transition: var(--transition);
         }
 
@@ -504,7 +513,7 @@
         .cart-total {
             display: flex;
             justify-content: space-between;
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Mobile first - smaller font */
             font-weight: 600;
             margin-bottom: 1rem;
             padding-top: 1rem;
@@ -517,21 +526,22 @@
             color: var(--discount-green);
             font-weight: 600;
             margin-bottom: 1rem;
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .cart-final-total {
             display: flex;
             justify-content: space-between;
-            font-size: 1.3rem;
+            font-size: 1.2rem; /* Mobile first - smaller font */
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; /* Mobile first - smaller margin */
             padding-top: 1rem;
             border-top: 2px solid var(--primary-blue);
             color: var(--primary-blue);
         }
 
         .checkout-form {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; /* Mobile first - smaller margin */
         }
 
         .form-group {
@@ -542,14 +552,16 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .form-control {
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.7rem; /* Mobile first - smaller padding */
             border: 1px solid #ddd;
             border-radius: 5px;
             font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .whatsapp-btn {
@@ -560,6 +572,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .whatsapp-btn:hover {
@@ -588,7 +601,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: var(--white);
-            width: 90%;
+            width: 95%; /* Mobile first - wider modal */
             max-width: 900px;
             border-radius: 10px;
             box-shadow: var(--shadow);
@@ -612,28 +625,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem;
+            padding: 1.2rem; /* Mobile first - smaller padding */
             border-bottom: 1px solid #eee;
             position: relative;
         }
 
         .modal-discount-badge {
             position: absolute;
-            top: 15px;
-            left: 15px;
+            top: 12px; /* Mobile first - adjusted position */
+            left: 12px;
             background: linear-gradient(135deg, var(--discount-red), #FF6B81);
             color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 4px 10px; /* Mobile first - smaller padding */
+            border-radius: 15px;
+            font-size: 0.8rem; /* Mobile first - smaller font */
             font-weight: 700;
         }
 
         .modal-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem; /* Mobile first - smaller font */
             color: var(--primary-blue);
             font-weight: 600;
-            margin-left: 80px;
+            margin-left: 60px; /* Mobile first - adjusted margin */
         }
 
         .close-modal {
@@ -646,17 +659,19 @@
 
         .modal-body {
             display: flex;
-            padding: 1.5rem;
+            flex-direction: column; /* Mobile first - column layout */
+            padding: 1.2rem; /* Mobile first - smaller padding */
         }
 
         .modal-image {
             flex: 1;
-            margin-right: 2rem;
+            margin-right: 0; /* Mobile first - no margin */
+            margin-bottom: 1.5rem; /* Mobile first - margin bottom */
         }
 
         .main-image {
             width: 100%;
-            height: 350px;
+            height: 250px; /* Mobile first - smaller image */
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 1rem;
@@ -676,8 +691,8 @@
         }
 
         .gallery-thumb {
-            width: 80px;
-            height: 80px;
+            width: 70px; /* Mobile first - smaller thumbnails */
+            height: 70px;
             border-radius: 5px;
             overflow: hidden;
             cursor: pointer;
@@ -702,28 +717,28 @@
         }
 
         .modal-description {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem; /* Mobile first - smaller margin */
         }
 
         .modal-packaging {
             background-color: rgba(77, 166, 255, 0.1);
             color: var(--primary-blue);
-            padding: 8px 12px;
-            border-radius: 15px;
-            font-size: 0.9rem;
+            padding: 6px 10px; /* Mobile first - smaller padding */
+            border-radius: 12px;
+            font-size: 0.8rem; /* Mobile first - smaller font */
             font-weight: 600;
             display: inline-block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem; /* Mobile first - smaller margin */
         }
 
         .modal-variations {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem; /* Mobile first - smaller margin */
         }
 
         .variation-option {
             display: flex;
             justify-content: space-between;
-            padding: 0.8rem 0;
+            padding: 0.7rem 0; /* Mobile first - smaller padding */
             border-bottom: 1px solid #eee;
             cursor: pointer;
             transition: var(--transition);
@@ -740,14 +755,14 @@
         }
 
         .variation-original-price {
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Mobile first - smaller font */
             color: #888;
             text-decoration: line-through;
             margin-right: 8px;
         }
 
         .variation-discounted-price {
-            font-size: 1rem;
+            font-size: 0.9rem; /* Mobile first - smaller font */
             font-weight: 600;
             color: var(--discount-green);
         }
@@ -755,37 +770,39 @@
         .modal-quantity {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem; /* Mobile first - smaller margin */
         }
 
         .quantity-label {
             margin-right: 1rem;
             font-weight: 500;
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .quantity-controls {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px; /* Mobile first - smaller gap */
         }
 
         .modal-footer {
-            padding: 1.5rem;
+            padding: 1.2rem; /* Mobile first - smaller padding */
             border-top: 1px solid #eee;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column; /* Mobile first - column layout */
+            gap: 1rem; /* Mobile first - gap between elements */
         }
 
         .modal-price {
-            font-size: 1.3rem;
+            font-size: 1.1rem; /* Mobile first - smaller font */
             font-weight: 600;
             color: var(--primary-blue);
+            text-align: center; /* Mobile first - center align */
         }
 
         .modal-discount-price {
             color: var(--discount-green);
-            font-size: 1.1rem;
+            font-size: 1rem; /* Mobile first - smaller font */
         }
 
         /* Contact Section */
@@ -795,7 +812,8 @@
 
         .contact-content {
             display: flex;
-            gap: 3rem;
+            flex-direction: column; /* Mobile first - column layout */
+            gap: 2rem; /* Mobile first - smaller gap */
         }
 
         .contact-info {
@@ -803,11 +821,11 @@
         }
 
         .contact-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem; /* Mobile first - smaller margin */
         }
 
         .contact-item h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Mobile first - smaller font */
             margin-bottom: 0.5rem;
             color: var(--primary-blue);
         }
@@ -817,10 +835,10 @@
         }
 
         .map-container {
-            height: 300px;
+            height: 250px; /* Mobile first - smaller map */
             border-radius: 10px;
             overflow: hidden;
-            margin-top: 2rem;
+            margin-top: 1.5rem; /* Mobile first - smaller margin */
             box-shadow: var(--shadow);
         }
 
@@ -834,24 +852,25 @@
         footer {
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 2rem 0;
+            padding: 1.5rem 0; /* Mobile first - smaller padding */
             text-align: center;
         }
 
         /* Notification */
         .notification {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 15px; /* Mobile first - closer to bottom */
+            right: 15px;
             background-color: var(--primary-blue);
             color: white;
-            padding: 12px 20px;
+            padding: 10px 16px; /* Mobile first - smaller padding */
             border-radius: 5px;
             box-shadow: var(--shadow);
             z-index: 2000;
             transition: var(--transition);
             opacity: 0;
             transform: translateY(20px);
+            font-size: 0.9rem; /* Mobile first - smaller font */
         }
 
         .notification.show {
@@ -862,10 +881,10 @@
         /* WhatsApp Direct Button */
         .whatsapp-direct {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 20px; /* Mobile first - closer to bottom */
+            right: 20px;
+            width: 50px; /* Mobile first - smaller button */
+            height: 50px;
             background-color: #25D366;
             border-radius: 50%;
             display: flex;
@@ -885,21 +904,159 @@
 
         .whatsapp-direct i {
             color: white;
-            font-size: 30px;
+            font-size: 25px; /* Mobile first - smaller icon */
         }
 
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .modal-body, .contact-content {
-                flex-direction: column;
+        /* ========== RESPONSIVE STYLES ========== */
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .slideshow-container {
+                height: 70vh; /* Tablet - medium height */
             }
-            
+
+            .slide-content h2 {
+                font-size: 2.2rem; /* Tablet - medium font */
+            }
+
+            .slide-content p {
+                font-size: 1.2rem; /* Tablet - medium font */
+            }
+
+            .btn {
+                padding: 0.8rem 1.8rem; /* Tablet - medium padding */
+                font-size: 1rem; /* Tablet - medium font */
+            }
+
+            .slideshow-dots {
+                bottom: 20px; /* Tablet - normal position */
+                gap: 10px; /* Tablet - normal gap */
+            }
+
+            .dot {
+                width: 12px; /* Tablet - normal dots */
+                height: 12px;
+            }
+
+            section {
+                padding: 4rem 0; /* Tablet - medium padding */
+            }
+
+            .section-title {
+                font-size: 2rem; /* Tablet - medium font */
+                margin-bottom: 2.5rem; /* Tablet - medium margin */
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Tablet - medium cards */
+                gap: 2rem; /* Tablet - medium gap */
+            }
+
+            .modal-body {
+                flex-direction: row; /* Tablet - row layout */
+            }
+
             .modal-image {
-                margin-right: 0;
-                margin-bottom: 2rem;
+                margin-right: 1.5rem; /* Tablet - add margin */
+                margin-bottom: 0; /* Tablet - remove margin */
+            }
+
+            .main-image {
+                height: 300px; /* Tablet - medium image */
+            }
+
+            .gallery-thumb {
+                width: 80px; /* Tablet - medium thumbnails */
+                height: 80px;
+            }
+
+            .modal-footer {
+                flex-direction: row; /* Tablet - row layout */
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .modal-price {
+                text-align: left; /* Tablet - left align */
+            }
+
+            .contact-content {
+                flex-direction: row; /* Tablet - row layout */
+                gap: 3rem; /* Tablet - normal gap */
+            }
+
+            .map-container {
+                height: 300px; /* Tablet - medium map */
+                margin-top: 2rem; /* Tablet - normal margin */
             }
         }
 
+        /* Desktop Styles */
+        @media (min-width: 992px) {
+            .slideshow-container {
+                height: 80vh; /* Desktop - larger height */
+            }
+
+            .slide-content h2 {
+                font-size: 2.8rem; /* Desktop - larger font */
+            }
+
+            .slide-content p {
+                font-size: 1.4rem; /* Desktop - larger font */
+            }
+
+            .btn {
+                padding: 0.8rem 2rem; /* Desktop - normal padding */
+                font-size: 1rem; /* Desktop - normal font */
+            }
+
+            .slideshow-dots {
+                bottom: 30px; /* Desktop - normal position */
+            }
+
+            section {
+                padding: 5rem 0; /* Desktop - normal padding */
+            }
+
+            .section-title {
+                font-size: 2.2rem; /* Desktop - normal font */
+                margin-bottom: 3rem; /* Desktop - normal margin */
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Desktop - normal cards */
+                gap: 2rem; /* Desktop - normal gap */
+            }
+
+            .main-image {
+                height: 350px; /* Desktop - normal image */
+            }
+
+            .gallery-thumb {
+                width: 80px; /* Desktop - normal thumbnails */
+                height: 80px;
+            }
+
+            .map-container {
+                height: 300px; /* Desktop - normal map */
+            }
+        }
+
+        /* Large Desktop Styles */
+        @media (min-width: 1200px) {
+            .slideshow-container {
+                height: 100vh; /* Large desktop - full height */
+            }
+
+            .slide-content h2 {
+                font-size: 3rem; /* Large desktop - larger font */
+            }
+
+            .slide-content p {
+                font-size: 1.5rem; /* Large desktop - larger font */
+            }
+        }
+
+        /* Navigation Responsive Styles */
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
@@ -926,40 +1083,12 @@
                 margin: 1rem 0;
             }
 
-            .slide-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .slide-content p {
-                font-size: 1.2rem;
-            }
-
             .cart-drawer {
                 max-width: 100%;
             }
 
             .logo-text {
                 display: none;
-            }
-
-            .modal-footer {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .modal-price {
-                font-size: 1.1rem;
-            }
-
-            .whatsapp-direct {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .whatsapp-direct i {
-                font-size: 25px;
             }
 
             .modal-title {
@@ -983,14 +1112,6 @@
                 height: 40px;
             }
 
-            .slide-content h2 {
-                font-size: 2rem;
-            }
-
-            .slide-content p {
-                font-size: 1rem;
-            }
-
             .section-title {
                 font-size: 1.8rem;
             }
@@ -1002,15 +1123,6 @@
 
             .modal-body {
                 padding: 1rem;
-            }
-
-            .main-image {
-                height: 250px;
-            }
-
-            .gallery-thumb {
-                width: 60px;
-                height: 60px;
             }
 
             .modal-footer {
@@ -1051,32 +1163,24 @@
 
     <!-- Slideshow Banner -->
     <div class="slideshow-container" id="home">
-        <div class="slide active" style="background-image: url('https://i.ibb.co/CpXpwmVn/Whats-App-Image-2025-10-08-at-12-13-40-cc098816.jpg');">
+        <div class="slide active" style="background-image: url('https://i.ibb.co/mCgLck32/Generated-Image-October-08-2025-2-11-PM.png');">
             <div class="slide-content">
-                <h2>Premium Herbal Oils</h2>
-                <p>100% Pure & Natural Extracts</p>
-                <a href="#products" class="btn">Shop Now</a>
+                
             </div>
         </div>
-        <div class="slide" style="background-image: url('https://i.ibb.co/99Vf2SdW/Whats-App-Image-2025-10-08-at-09-18-56-35f9c2a3.jpg');">
+        <div class="slide" style="background-image: url('https://i.ibb.co/6JtczrNb/Generated-Image-October-08-2025-7-28-PM.png');">
             <div class="slide-content">
-                <h2>Nature's Healing Power</h2>
-                <p>Traditional Remedies, Modern Science</p>
-                <a href="#products" class="btn">Discover More</a>
+                
             </div>
         </div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        <div class="slide" style="background-image: url('https://i.ibb.co/nsfcyC2x/Generated-Image-October-08-2025-6-39-PM.png');">
             <div class="slide-content">
-                <h2>40% OFF All Products</h2>
-                <p>Limited Time Offer</p>
-                <a href="#products" class="btn">Grab Deal</a>
+                
             </div>
         </div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1585435557343-3b092031d5ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        <div class="slide" style="background-image: url('https://i.ibb.co/qYCjptYJ/Generated-Image-October-08-2025-5-36-PM.png');">
             <div class="slide-content">
-                <h2>Free Delivery</h2>
-                <p>On Orders Above Rs. 5000</p>
-                <a href="#products" class="btn">Order Now</a>
+               
             </div>
         </div>
         <div class="slideshow-dots" id="slideshowDots">
@@ -1352,7 +1456,7 @@
                 description: "High-quality fish oil rich in Omega-3 fatty acids for heart and brain health. Our fish oil is purified to remove any impurities while retaining its nutritional value.",
                 packaging: "15pcs per packet",
                 images: [
-                    "https://i.ibb.co/LD43C6fL/Generated-Image-October-07-2025-11-41-PM.png"
+                    "https://i.ibb.co/35WpyKFX/Generated-Image-October-08-2025-2-57-PM.png"
                 ],
                 price: 2700,
                 size: "60ml"
@@ -1485,7 +1589,7 @@
             {
                 id: 20,
                 name: "Lemon Oil",
-                description: "Pure lemon essential oil with a fresh, uplifting scent. Extracted from fresh lemon peels to capture the vibrant citrus aroma.",
+                description: "Pure lemon essential oil with a fresh, uplifting scent. Our orange oil is extracted from the peel of fresh oranges for a vibrant scent.",
                 packaging: "15pcs per packet",
                 images: [
                     "https://i.ibb.co/k663KfbQ/Generated-Image-October-05-2025-2-54-PM.png"
@@ -1547,7 +1651,7 @@
                 description: "Pure sesame oil extracted from high-quality sesame seeds. Known for its rich nutritional profile and numerous health benefits. Our sesame oil is cold-pressed to preserve its natural antioxidants and vitamins, making it perfect for cooking, skin care, and hair treatments.",
                 packaging: "15pcs per packet",
                 images: [
-                    "https://i.ibb.co/0Q8y7J2L/Generated-Image-October-08-2025-11-15-AM.png"
+                    "https://i.ibb.co/Z16sgccn/Generated-Image-October-08-2025-10-32-AM.png"
                 ],
                 price: 3600,
                 size: "60ml"
@@ -1628,7 +1732,7 @@
         function startSlideshow() {
             slideInterval = setInterval(() => {
                 nextSlide();
-            }, 3000); // Change slide every 3 seconds
+            }, 5000); // Change slide every 5 seconds
         }
 
         // Go to next slide
